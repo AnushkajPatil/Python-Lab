@@ -1,0 +1,50 @@
+import pandas as pd
+
+data = {'Name': ['Alice', 'Bob', 'Charlie', None, 'Eva'],
+        'Age': [25, None, 30, 22, None],
+        'City': ['New York', 'Los Angeles', None, 'Chicago', 'Miami']}
+df = pd.DataFrame(data)
+
+def analyse_missing_data(df):
+    print("Data Frame")
+    print(df)
+    print("\nMissing Data Analysis:")
+    
+    missing_data = df.isnull().sum()
+    print("Missing values in each column:")
+    print(missing_data[missing_data > 0])
+    
+    missing_percentage = (missing_data / len(df)) * 100
+    print("\nPercentage of missing values in each column:")
+    print(missing_percentage[missing_percentage > 0])
+    
+    return missing_data, missing_percentage
+
+def handle_missing_data(df):
+    print("\nChoose a method to handle missing data:")
+    print("1. Fill missing values with specified value")
+    print("2. Drop rows with missing values")
+    print("3. Drop columns with missing values")
+    
+    # Example choice (You can replace this with user input in a real interactive scenario)
+    choice = input("Enter your choice:") # This is just an example choice. Change this to interact with real input
+    
+    if choice == '1':
+        value = 'Unknown'  # Example value to fill missing data
+        df_filled = df.fillna(value)
+        print("Data after filling missing values:")
+        print(df_filled)
+    elif choice == '2':
+        df_dropped_rows = df.dropna()
+        print("\nData after dropping rows with missing values:")
+        print(df_dropped_rows)
+    elif choice == '3':
+        df_dropped_columns = df.dropna(axis=1)
+        print("\nData after dropping columns with missing values:")
+        print(df_dropped_columns)
+    else:
+        print("Invalid choice")
+
+# Calling the functions
+missing_data, missing_percentage = analyse_missing_data(df)
+handle_missing_data(df)
