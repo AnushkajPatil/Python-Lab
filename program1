@@ -1,0 +1,14 @@
+n=int(input("Enter No:"))
+if (n<=0):
+    print("Invalid input")
+    while(n<=0):
+        y=int(input("Enter no.:"))
+        n=y
+def recursion(x):
+    if (x==1):
+        return 1
+    elif (x<=0):
+        print("Enter vaild no.:")
+    else:
+        return(x+recursion(x-1))
+print("Sum of n natural no is ",recursion(n))
