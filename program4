@@ -1,0 +1,35 @@
+class Mylist():
+    def __init__(self):
+        self.list1=[]
+    def add(self,element):
+        self.list1.append(element)
+    def remove(self,element):
+        if element in self.list1:
+            self.list1.remove(element)
+        else:
+            print("Element not fount")
+    def display(self):
+        if (len(self.list1)==0):
+            print("list is empty")
+        else:
+            print("Elements are ",end=" ")
+            for i in range(len(self.list1)):
+                print(f"{self.list1[i]}",end=" ")
+            print( )
+obj1=Mylist()
+print("MENU")
+print("1.Append\n2.Delete\n3.Display\n4.Exit")
+while(1):
+    choice=int(input("Enter your choice:"))
+    if choice==1:
+        element=int(input("Enter element:"))
+        obj1.add(element)
+    elif choice==2:
+        element=int(input("Enter element to delete:"))
+        obj1.remove(element)
+    elif choice==3:
+        obj1.display()
+    elif choice==4:
+        break
+    else:
+        print("Invalid")
